@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>xBlog</title>
+		<base href="/">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/app.css">
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous">
+		</script>
+		<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+		</script>
+		<script 
+				type='text/javascript'
+				src="request_form.js">
+		</script>
+		<script type="text/javascript" 
+				src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js">
+		</script>
+		<script 
+				type='text/javascript'
+				src="pass_comment.js">
+		</script>
+	</head>
+	<body class="Site">
+	<main class="Site-content">
+		<div class="ui fixed inverted menu">
+			<div class="ui container">
+				<div class="header item">
+					<i class="paper plane icon"></i>
+					xBlog
+				</div>
+				<a href="/" class="item">Home</a>
+				<% if(currentUser){ %>
+				<a href="/blogs/new" class="item">New Post</a>
+				<% } %>
+						<% if(!currentUser){ %>
+				<div class="right menu">
+					<div class="ui item animated fade button" tabindex="0">
+						<a href="/login">
+						<div class="visible content">
+							<i class="terminal icon"></i>
+						</div>
+						<div class="hidden content">
+							Login
+						</div>
+						</a>
+					</div>
+					<div class="ui item animated fade button" tabindex="0">
+						<a href="/register">
+						<div class="visible content">
+							<i class="folder open outline icon"></i>
+						</div>
+						<div class="hidden content">
+							Sign up
+						</div>
+						</a>
+					</div>
+					</div>
+						<% } else { %>
+					<div class="right menu">
+					<div class="header item">
+						Hello&nbsp;<span name="<%= currentUser._id %>" id="getCurrentUserName"> <%= currentUser.username %></span>
+					</div>
+						 <div class="ui item animated fade button" tabindex="0">
+						<a href="/logout">
+						<div class="visible content">
+							<i class="power off icon"></i>
+						</div>
+						<div class="hidden content">
+							Logout
+						</div>
+						</a>
+					</div>
+						</div>
+						<% } %>
+			</div>
+		</div>
+		
+		
+

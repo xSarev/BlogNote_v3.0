@@ -1,0 +1,71 @@
+<%- include("partials/header") %>
+<div class="ui main text container segment">
+	<div name="<%= blog._id %>" id="getBlogId" class="ui centered huge header">
+				<%= blog.title %>	
+	</div>
+		<div class="ui top attached">
+			<div class="item">
+				<img class="ui centered rounded image" src="<%= blog.image %>">
+				<div class="metadata">
+					<span class="date"><%= blog.created.toDateString() %></span>
+				</div>
+				<blockquote>
+					<p><%= blog.body %></p>
+				</blockquote>
+				<span class="author">
+					Submitted by <%= blog.author.username %>
+				</span>
+				<% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+				<div id="buttons-div">
+					<a class="ui inverted green button" href="/blogs/<%= blog._id %>/edit">Update</a>
+					<form id="deleteButton" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+						<button class="ui inverted red button">
+							Delete
+						</button>
+					</form>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	<div class="ui comments">
+		<h3 class="ui dividing header">Comments
+			<% if(currentUser){ %>
+			<span>
+				<a class="ui yellow basic button" onclick = "Openform();">Add new review</a>
+			</span>
+		<% } %>
+		</h3>
+			<div class="comment">
+				<% blog.comments.forEach(function(comment){ %>
+				<% if(comment.author.gender == "male"){ %>
+					<a class="avatar">
+						<img src="profile/avatar_male.png">
+					</a>
+				<% } else if(comment.author.gender == "female"){ %>
+				 	<a class="avatar">
+						<img src="profile/avatar_female.png">
+					</a>
+				<% } %>
+				<div class="content">
+					<a class="author"><%= comment.author.username %></a>
+					<div class="text">
+						<%= comment.text %>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		<form class="ui reply form" id="comment-form">
+			<div class="field">
+				<textarea id="comment-area"></textarea>
+			</div>
+			<div>
+				<button class="ui blue labeled submit icon button" id="submit-comment">
+				<i class="icon edit"></i> Submit
+				</button>
+			</div>
+		</form>
+	</div>
+	<hr>
+</div>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,45 @@
+<%- include("partials/header") %>
+<div class="landing-image">
+    <form class="ui form" action="/register" method="POST">
+        <div class="ui main text container">
+            <div class="ui form inverted segment" id="registerForm">
+                <div class="field">
+                    <label>Email</label>
+                    <input id="selector-input-one" type="text" name="email" placeholder="jon.snow@gmail.com">
+				  </div>
+                    <div class="field">
+                        <label>Username</label>
+                        <input id="selector-input-one" type="text" name="username" placeholder="John.Snow">
+				  </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input id="selector-input-two" type="password" name="password" placeholder="password">
+				  </div>
+						<div class="field">
+							<label>Gender</label>
+							<select class="ui dropdown" type="text" name="gender">
+								<option value="">Gender</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+						</div>
+						<div class="inline field">
+							<div class="ui checkbox" id="style-checkbox">
+								<input type="checkbox" name="terms">
+								<label>I agree to the terms and conditions</label>
+							</div>
+						</div>
+                                    <button class="ui submit inverted green button">Register</button>
+                                </div>
+                                <div class="ui error message">
+                                </div>
+                            </div>
+	</form>
+</div>
+<script>
+	$(function() {
+		$( "#footer-id" ).css( "display", "none" );
+	});
+</script>
+
+<%- include("partials/footer") %>

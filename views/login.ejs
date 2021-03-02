@@ -1,0 +1,26 @@
+<%- include("partials/header") %>
+<div class="landing-image">
+	<form action="/login" method="POST">
+		<div class="ui main text container">
+			<div class="ui inverted segment" id="loginForm">
+		    	<div class="ui inverted form">
+				  <div class="field">
+					<label>Username</label>
+					<input id="selector-input-one" type="text" name="username" placeholder="John.Snow" required>
+				  </div>
+				  <div class="field">
+					<label>Password</label>
+					<input id="selector-input-two" type="password" name="password" placeholder="password" required>
+				  </div>
+					<button class="ui submit inverted green button">Login</button>
+					</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	$(function() {
+		$( "#footer-id" ).css( "display", "none" );
+	});
+</script>
+<%- include("partials/footer") %>

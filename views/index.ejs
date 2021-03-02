@@ -1,0 +1,45 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container">
+	<div class="ui huge header">xBlog Posts</div>
+	<div class="ui top  attached segment">
+		<div class="ui divided items">
+			<% blogs.forEach(function(blog){ %>
+			<div class="item">
+				<div class="image">
+					<img src="<%= blog.image %>">
+				</div>
+				<div class="content">
+					<a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+					<div class="meta">
+						<span><%= blog.created.toDateString() %></span>
+					</div>
+					<div class="description">
+						<p><%= blog.body.substring(0, 100) %>...</p>
+					</div>
+					<div class="extra"> 
+						<a class="ui blue basic button" href="/blogs/<%= blog._id %>">
+							Read More  
+							<i class="hand point left outline icon"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="ui bottom  attached">
+				<div id ="postLikes" class="ui labeled button" tabindex="0">
+					<a href="/blogs/<%= blog._id %>/likes?_method=POST">
+						<div class="ui red button">
+   						 <i class="heart icon"></i> Like
+ 					 </div>
+					</a>
+			 		 <a  class="ui basic red left pointing label">
+ 			  		 <%= blog.likes %>
+ 					 </a>
+				</div>
+			</div>
+			<% }); %>
+		</div>
+	</div>
+</div>
+
+<%- include("partials/footer") %>
